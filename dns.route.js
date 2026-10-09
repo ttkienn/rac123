@@ -20,8 +20,6 @@ router.post('/dns-query', async (req, res) => {
         const question = packet.questions[0];
         const requestedDomain = question.name;
 
-        console.log(`[DNS] Querying: ${requestedDomain}`);
-
         if (BLOCKLIST.includes(requestedDomain)) {
             const responsePacket = dnsPacket.encode({
                 type: 'response',
